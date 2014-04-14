@@ -29,7 +29,7 @@ describe "Static pages" do
       expect(page).to have_title("#{base_title} | Contact Us")
     end
     
-    it "should have a mailto: address" do
+    it "should have a proper email link" do
       visit '/static_pages/contact'
       expect(page).to have_selector('a', text: "gwyattkelsey@gmail.com")
     end
