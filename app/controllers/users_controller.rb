@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :signed_in_user_to_new,   only: [:new]
   before_action :signed_in_user,  only: [:destroy, :edit, :index, :update]
   before_action :correct_user,    only: [:edit, :update]
   before_action :admin_user,     only: :destroy  
@@ -44,6 +45,11 @@ class UsersController < ApplicationController
     end
     
     # Before filters
+    def signed_in_user_to_new
+      if signed_in?
+        redirect_to root_url
+      end
+    end
     def signed_in_user
       unless signed_in?
         store_location

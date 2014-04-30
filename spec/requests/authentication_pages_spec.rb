@@ -104,7 +104,7 @@ describe "Authentication" do
         specify { expect(response).to redirect_to(root_url) }
       end
     end
-    
+
     describe "as non-admin user" do
       let(:user) { FactoryGirl.create(:user) }
       let(:non_admin) { FactoryGirl.create(:user) }
@@ -114,6 +114,17 @@ describe "Authentication" do
       describe "submitting a DELETE request to the Users#destroy action" do
         before { delete user_path(user) }
         specify { expect(response).to redirect_to(root_url) }
+      end
+    end
+
+    describe "as signed-in user" do
+      let(:user) { FactoryGirl.create(:user) }
+      before { sign_in user }
+
+      describe "visiting the new user path" do
+        before { visit new_user_path }
+
+        it { should_not have_title('Sign up') }
       end
     end
   end
