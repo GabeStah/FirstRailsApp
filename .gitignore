@@ -17,3 +17,6 @@
 
 # Ignore config database.yml
 /config/database.yml
+
+# Ignore .idea directory
+/.idea
