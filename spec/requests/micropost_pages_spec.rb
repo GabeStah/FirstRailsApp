@@ -33,6 +33,15 @@ describe "Micropost pages" do
   describe "micropost destruction" do
     before { FactoryGirl.create(:micropost, user: user) }
 
+    # let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
+    # before { sign_in user, no_capybara: true }
+    #
+    # describe "submitting a GET request to the Users#edit action" do
+    #   before { get edit_user_path(wrong_user) }
+    #   specify { expect(response.body).not_to match(full_title('Edit user')) }
+    #   specify { expect(response).to redirect_to(root_url) }
+    # end
+
     describe "as correct user" do
       before { visit root_path }
 
