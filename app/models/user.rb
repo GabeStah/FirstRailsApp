@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
 
   def feed
-    #this is preliminary
     Micropost.where("user_id = ?", id)
   end
 
